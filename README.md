@@ -1,7 +1,7 @@
 ## Darth Test Parser
 This is a test parser which can automatically parse the tests in from websites like codeforces, codechef, atcoder etc.
 ## Updates:-
-1. Now withe the help of *diff* command track if your output is same as the ouput required by the online Judge
+1. Now with the help of #diff# command track if your output is same as the ouput required by the online Judge
 ## Motivation:-
 1. The only motivation was the existence of competitive companion that could help with getting the tests of a Problem rather than Copy Pasting.
 ## Necessary Installations for running this parser.
