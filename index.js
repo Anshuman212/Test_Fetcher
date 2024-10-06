@@ -6,7 +6,7 @@ const { stringify } = require("querystring");
 const { type } = require("express/lib/response");
 const app = express();
 const port = 10045; 
-const path = "/home/darthrider/Desktop/cp_codes";
+const path = "/mnt/c/Users/raian/Desktop/CP/cp_codes";
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json()); 
@@ -21,13 +21,28 @@ app.post('/',(req,res)=>{
     input += tests.input;
     output+=tests.output;
   });
-  fs.writeFile(path +'/output.txt', output,"utf-8", (e)=>{
+  fs.writeFile(path +'/Coutput.txt', output,"utf-8", (e)=>{
     if(e) console.log(e);
   })
 fs.writeFile(path +'/input.txt', input,"utf-8", (e)=>{
   if(e) console.log(e);
 })
 console.log('Test Case Parsed');
+const readStream=fs.createReadStream(path+'/scratch.cpp','utf-8');
+const writeStream=fs.createWriteStream(path+'/mycode2.cpp');
+readStream.pipe(writeStream);
+writeStream.on('finish', () => {
+    console.log('mycode2.cpp ready for master!');
+});
+
+// Handle errors
+readStream.on('error', (err) => {
+    console.error('Error reading file:', err);
+});
+
+writeStream.on('error', (err) => {
+    console.error('Error writing file:', err);
+});
 });
 
 
